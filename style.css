@@ -1,0 +1,435 @@
+/* =========================================================
+   LOVE LETTER — STYLESHEET
+   ========================================================= */
+
+:root {
+    --bg-gradient-1: #fff1f5;
+    --bg-gradient-2: #ffe4e9;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --paper-bg: #fffdfa;
+    --text-primary: #3d2329;
+    --text-secondary: #7a545d;
+    --accent: #e63956;
+    --accent-hover: #c82340;
+    --accent-soft: #ffdce2;
+    --border: rgba(230, 57, 86, 0.15);
+    --shadow: 0 20px 50px rgba(180, 50, 75, 0.12);
+    --button-shadow: 0 10px 25px rgba(230, 57, 86, 0.28);
+    --envelope-body: #f38b9b;
+    --envelope-flap: #e67385;
+    --transition: 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+body.dark-mode {
+    --bg-gradient-1: #180e13;
+    --bg-gradient-2: #28141e;
+    --card-bg: rgba(38, 22, 29, 0.88);
+    --paper-bg: #221419;
+    --text-primary: #fff0f3;
+    --text-secondary: #d6a8b3;
+    --accent: #ff5a78;
+    --accent-hover: #ff7f97;
+    --accent-soft: #4a1f29;
+    --border: rgba(255, 90, 120, 0.2);
+    --shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    --button-shadow: 0 10px 25px rgba(255, 90, 120, 0.3);
+    --envelope-body: #a24253;
+    --envelope-flap: #b84f62;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100svh;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background var(--transition), color var(--transition);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    transition: transform var(--transition), background var(--transition);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
+/* Container & Progress Bar */
+.love-letter {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px 60px;
+    position: relative;
+}
+
+.story-progress {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 90;
+    display: flex;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: all var(--transition);
+}
+
+.progress-dot.active {
+    width: 24px;
+    border-radius: 999px;
+    background: var(--accent);
+}
+
+/* Screen Visibility & Card Alignment */
+.letter-screen {
+    display: none;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    isolation: isolate;
+}
+
+.letter-screen.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 600ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.card-container {
+    width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 48px 32px;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Typography & Visual Elements */
+.letter-icon, .success-icon {
+    font-size: clamp(3.5rem, 10vw, 5rem);
+    margin-bottom: 16px;
+    animation: float 3s ease-in-out infinite;
+}
+
+h1 {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    margin: 12px 0 16px;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    color: var(--accent);
+    line-height: 1.25;
+}
+
+p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.tagline {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.subtext {
+    margin-bottom: 24px;
+}
+
+/* Common Buttons */
+button:not(.theme-toggle) {
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 14px 32px;
+    transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.open-letter-button,
+.open-envelope-button,
+.continue-letter-button,
+.replay-button,
+.yes-button {
+    background: var(--accent);
+    color: #ffffff;
+    box-shadow: var(--button-shadow);
+}
+
+.open-letter-button:hover,
+.open-envelope-button:hover,
+.continue-letter-button:hover,
+.replay-button:hover,
+.yes-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: var(--accent-hover);
+}
+
+/* Envelope Screen */
+.envelope {
+    width: 280px;
+    height: 180px;
+    position: relative;
+    margin: 20px 0 28px;
+    cursor: pointer;
+    perspective: 800px;
+}
+
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    background: var(--envelope-body);
+    border-radius: 0 0 12px 12px;
+    z-index: 3;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 100px solid var(--envelope-flap);
+    transform-origin: top center;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 4;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.hidden-letter {
+    position: absolute;
+    width: 85%;
+    height: 80%;
+    left: 7.5%;
+    bottom: 10%;
+    background: var(--paper-bg);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    z-index: 2;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.envelope.open .hidden-letter {
+    transform: translateY(-50px);
+}
+
+.instruction {
+    margin-bottom: 20px;
+}
+
+/* Letter Paper Screen */
+.letter-paper {
+    width: 100%;
+    background: var(--paper-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 44px 36px;
+    box-shadow: var(--shadow);
+    text-align: left;
+    position: relative;
+}
+
+.letter-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.header-icon {
+    font-size: 2rem;
+}
+
+.letter-content p {
+    margin-bottom: 16px;
+}
+
+.continue-letter-button {
+    display: block;
+    margin: 28px auto 0;
+}
+
+/* Question & Interactive Buttons */
+.pre-question {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.big-question {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.pulse-heart {
+    display: inline-block;
+    font-size: 3rem;
+    margin-bottom: 8px;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.letter-answer-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.think-button {
+    background: var(--accent-soft);
+    color: var(--text-primary);
+}
+
+.think-button:hover {
+    transform: translateY(-2px);
+}
+
+/* Success Screen */
+.final-hearts {
+    font-size: 1.8rem;
+    margin: 20px 0;
+    letter-spacing: 6px;
+    animation: float 2.5s ease-in-out infinite;
+}
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    padding: 16px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border);
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+}
+
+/* Dynamic Floating Heart Particles */
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1000;
+    font-size: 1.5rem;
+    animation: floatUp 4s linear forwards;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.08); }
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 480px) {
+    .love-letter {
+        padding: 70px 14px 40px;
+    }
+
+    .card-container, .letter-paper {
+        padding: 32px 20px;
+        border-radius: 20px;
+    }
+
+    .envelope {
+        width: 220px;
+        height: 140px;
+    }
+
+    .envelope-flap {
+        border-left-width: 110px;
+        border-right-width: 110px;
+        border-top-width: 80px;
+    }
+
+    .letter-answer-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .letter-answer-buttons button {
+        width: 100%;
+    }
+}

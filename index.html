@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Letter For You 💌</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#fff4f7">
+</head>
+
+<body>
+    <!-- Theme Switcher -->
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
+        🌙
+    </button>
+
+    <main class="love-letter">
+        <!-- Story Progress Bar -->
+        <div class="story-progress" aria-hidden="true">
+            <span class="progress-dot active"></span>
+            <span class="progress-dot"></span>
+            <span class="progress-dot"></span>
+            <span class="progress-dot"></span>
+            <span class="progress-dot"></span>
+        </div>
+
+        <!-- SCREEN 1 — LETTER INTRO -->
+        <section class="letter-screen intro-screen active" id="letterIntro">
+            <div class="card-container">
+                <div class="letter-icon">💌</div>
+                <p class="tagline">You have a special letter</p>
+                <h1>For your eyes only.</h1>
+                <p class="subtext">Someone has something they've been wanting to say.</p>
+                <button type="button" class="open-letter-button">
+                    Open My Letter 💌
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 2 — ENVELOPE ANIMATION -->
+        <section class="letter-screen envelope-screen" id="envelope">
+            <div class="card-container">
+                <div class="envelope" id="interactiveEnvelope" role="button" tabindex="0" aria-label="Interactive envelope">
+                    <div class="envelope-flap"></div>
+                    <div class="hidden-letter">
+                        <span>💗</span>
+                    </div>
+                    <div class="envelope-front"></div>
+                </div>
+                <p class="instruction">Tap the envelope to open it</p>
+                <button type="button" class="open-envelope-button">
+                    Open 💕
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 3 — THE LETTER -->
+        <section class="letter-screen actual-letter-screen" id="letter">
+            <article class="letter-paper">
+                <header class="letter-header">
+                    <span class="header-icon">💌</span>
+                    <h2>Dear You,</h2>
+                </header>
+                <div class="letter-content">
+                    <p>I've been meaning to tell you something...</p>
+                    <p>Every time I talk to you, my day somehow gets better.</p>
+                    <p>Every time I see you, I smile a little more.</p>
+                    <p>And honestly...</p>
+                    <p>I don't want to keep this to myself anymore.</p>
+                </div>
+                <button type="button" class="continue-letter-button">
+                    Keep reading 💗
+                </button>
+            </article>
+        </section>
+
+        <!-- SCREEN 4 — REVEAL QUESTION -->
+        <section class="letter-screen reveal-screen" id="letterReveal">
+            <article class="letter-paper">
+                <p class="pre-question">There's one question I've been wanting to ask.</p>
+                <div class="big-question">
+                    <span class="pulse-heart">💕</span>
+                    <h2>Will you be my girlfriend?</h2>
+                </div>
+                <div class="letter-answer-buttons">
+                    <button type="button" class="yes-button">
+                        YES, I WILL! ❤️
+                    </button>
+                    <button type="button" class="think-button">
+                        Let me think... 🙈
+                    </button>
+                </div>
+            </article>
+        </section>
+
+        <!-- SCREEN 5 — SUCCESS -->
+        <section class="letter-screen success-screen" id="letterSuccess">
+            <div class="card-container">
+                <div class="success-icon">💕</div>
+                <h2>Dear Girlfriend,</h2>
+                <p>Looks like I can finally call you that. 🥹❤️</p>
+                <p>I'm really happy you said yes.</p>
+                <div class="final-hearts">❤️ 💕 ❤️</div>
+                <p>This is only the beginning.</p>
+                <button type="button" class="replay-button">
+                    Read it again ↻
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Made with <span aria-hidden="true">❤️</span> and a little courage.</p>
+        <p>&copy; 2026 Bobo Technologies Limited. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
